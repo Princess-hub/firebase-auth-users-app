@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -6,38 +7,13 @@ import Users from './components/Users';
 import AddUserForm from './components/AddUserForm';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [
-        {
-          name: "James k. Mensah",
-          email: "jkm.mensah@gmail.com",
-          gen: 4, 
-          id: "frf",
-        },
-        {
-          name: "James k. Mensah",
-          email: "jkm.mensah@gmail.com",
-          gen: 4, 
-          id: "rfr",
-        },
-        {
-          name: "James k. Mensah",
-          email: "jkm.mensah@gmail.com",
-          gen: 4,
-          id: "frr", 
-        }
-      ]
-    }
-
-  }
-  addNewUser = (user) => {
-    user.id=Math.random().toString()
-    this.setState({
-      users: [...this.state.users, user]
-    })
-  }
+  
+  // addNewUser = (user) => {
+  //   user.id=Math.random().toString()
+  //   this.setState({
+  //     users: [...this.state.users, user]
+  //   })
+  // }
   deleteUser = (id) => {
     let undeletedUsers = this.state.users.filter(user => user.id !== id);
     this.setState({
@@ -57,11 +33,13 @@ class App extends Component {
           <Row>
             <Col md="4">
               <h3>Add Users</h3>
-              <AddUserForm addUser={this.addNewUser} />
+              {/* <AddUserForm addUser={this.addNewUser} /> */}
             </Col>
             <Col>
             <h3>All Codetrain Users</h3>
-              <Users  usersData={this.state.users} deleteUser={this.deleteUser} editUser={this.editUser} />
+              <Users  
+               deleteUser={this.deleteUser} 
+               editUser={this.editUser} />
             </Col>
           </Row>
         </Container>
@@ -70,5 +48,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  users: state.users
+});
+
+const mapDispatchToProps = {
+  addUser: addUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
