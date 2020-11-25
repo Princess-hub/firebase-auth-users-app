@@ -1,4 +1,4 @@
-export const addUser = (user) => {
+export const addUser = (newUser) => {
     newUser.id=Math.random().toString()
     return {
         type: 'ADD_USER',
