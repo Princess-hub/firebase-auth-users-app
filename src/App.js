@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -33,7 +32,7 @@ class App extends Component {
           <Row>
             <Col md="4">
               <h3>Add Users</h3>
-              {/* <AddUserForm addUser={this.addNewUser} /> */}
+              <AddUserForm />
             </Col>
             <Col>
             <h3>All Codetrain Users</h3>
@@ -48,13 +47,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: state.users
-});
 
-const mapDispatchToProps = {
-  addUser: addUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 

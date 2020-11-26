@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import addUser from '../actions/userActions';
+import {addUser} from '../actions/userActions';
 import { Form, Button } from 'react-bootstrap';
 
 class AddUserForm extends Component {
@@ -28,7 +28,7 @@ class AddUserForm extends Component {
             email: "",
             gen: "",
         }); 
-        console.log("hello", this.state) 
+        // console.log("hello", this.state) 
     };
 
     render() {

@@ -4,24 +4,29 @@ import { Container, Row } from 'react-bootstrap';
 import User from './User';
 
 const Users = (props) => {
+    console.log(props)
     return (
         <Container>
             <Row>
                 {
-                    props.usersData.map((user) => {
-                        return <User userInfo={user}
-                            key={user.id}
-                            deleteUser={props.deleteUser}
-                            editUser={props.editUser} />
-                    })
+                    props.usersData.map (
+                    (user) => <User
+                    userInfo={user}
+                    key={user.id}
+
+                        
+                    />
+                    )
                 }
 
             </Row>
         </Container>
     );
 }
+
+ 
 const mapStateToProps = (state) => ({
-    users: state.usersState.users
+    usersData: state.userState.users
 })
 
 export default connect(mapStateToProps)(Users);
