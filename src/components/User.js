@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
+import {connect} from 'react-redux';
+import {deleteUser} from '../actions/userActions';
 import EditUserForm from './EditUserForm';
 
 const User = (props) => {
@@ -11,7 +13,7 @@ const User = (props) => {
     const handleShow = () => setShow(true);
     const handleDelete = (e) => {
         e.preventDefault();
-        props.deleteUser(props.userInfo.id);
+        props.removeUser(props.userInfo.id);
     }
     return (
         <>
@@ -20,7 +22,7 @@ const User = (props) => {
                     <Modal.Title>Edit User</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditUserForm  userInfo={props.userInfo} editUser={props.editUser} closeModal={handleClose}/>
+                    <EditUserForm  userInfo={props.userInfo} closeModal={handleClose}/>
                 </Modal.Body>
             </Modal>
 
@@ -45,4 +47,8 @@ const User = (props) => {
         </>
     );
 };
-export default User;
+
+const mapDispatchToProps = {
+    removeUser: deleteUser
+}
+export default connect(null, mapDispatchToProps)(User);
