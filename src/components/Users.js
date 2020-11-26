@@ -29,4 +29,4 @@ const mapStateToProps = (state) => ({
     usersData: state.userState.users
 })
 
-export default connect(null,mapStateToProps)(Users);
+export default connect(mapStateToProps)(Users);
