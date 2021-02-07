@@ -36,9 +36,7 @@ class App extends Component {
             </Col>
             <Col>
             <h3>All Codetrain Users</h3>
-              <Users  
-               deleteUser={this.deleteUser} 
-               editUser={this.editUser} />
+              <Users />
             </Col>
           </Row>
         </Container>
