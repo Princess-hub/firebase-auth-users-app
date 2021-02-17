@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {connect} from 'react-redux';
+import {logout} from '../src/actions/authActions'
 import { Container, Row, Col } from 'react-bootstrap';
 import Users from './components/Users';
 import AddUserForm from './components/AddUserForm';
@@ -36,6 +38,10 @@ class App extends Component {
             </Col>
             <Col>
             <h3>All Codetrain Users</h3>
+            <br />
+            <button onClick = {() => this.props.logout()}>Logout</button>
+            <br />
+            <br />
               <Users />
             </Col>
           </Row>
@@ -44,7 +50,10 @@ class App extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  logout: logout
+}
 
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
 

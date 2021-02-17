@@ -21,7 +21,7 @@ class EditUserForm extends Component {
     };
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.updateUser(this.state)
+         this.props.updateUser(this.state);
         this.setState({
             name: "",
             email: "",

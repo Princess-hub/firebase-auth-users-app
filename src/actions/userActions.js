@@ -1,4 +1,3 @@
- import { getFirestore } from "redux-firestore"
 
 export const addUser = (newUser) => {
     return ( dispatch, getState, {getFirestore, getFirebase}) => {
@@ -22,16 +21,17 @@ export const deleteUser = (userId) => {
         const firestore = getFirestore();
         firestore.collection("user").doc(userId).delete()
         .then(res => {console.log("user upated succesfull")})
-        .catch(eer => {console.log("user could not be updated")})
+        .catch(err => {console.log("user could not be updated")})
     }    
 }
 
 //action for editing user
-export const editUser = (updatedUser) => {
+export const editUser = (updateUser) => {
+    console.log("action-fired", updateUser)
     return(dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore();
-        firestore.collection("user").doc(updatedUser.id).set(updatedUser)
-        .then(resp => {console.log("user updated successfully")})
-        .cacth(err => {console.log ("user could not be updated")})
+        firestore.collection("user").doc(updateUser.id).set(updateUser)
+        .then(res => {console.log("user update successfully")})
+        .catch(err => {console.log ("user could not be updated")})
     }
 }
